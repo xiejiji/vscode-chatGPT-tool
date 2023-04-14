@@ -1,0 +1,103 @@
+{
+  "name": "chatgpt",
+  "displayName": "chatgpt",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.76.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "chatgpt.helloWorld",
+    "chatgpt start",
+    "chatgpt.doRefactor"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "chatgpt.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "chatgpt.start",
+        "title": "chatgpt start"
+      },
+      {
+        "command": "chatgpt.doRefactor",
+        "title": "chatgpt doRefactor"
+      }
+    ],
+    "configuration": {
+      "title": "chatgpt配置",
+      "properties": {
+        "chatgpt.key": {
+          "type": "string",
+          "default": "",
+          "description": "设置chatgpt的key"
+        },
+        "chatgpt.model": {
+          "type": "string",
+          "default": "",
+          "description": "设置chatgpt的model"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "webview": "webpack --config ./build/webpack.webview.js",
+    "dev": "webpack serve --config ./build/webpack.webview.js",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.76.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "@vscode/test-electron": "^2.3.0",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "eslint": "^8.36.0",
+    "glob": "^8.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.5",
+    "mocha": "^10.2.0",
+    "node-sass": "^8.0.0",
+    "postcss-loader": "^7.1.0",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.2",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.5",
+    "vue-eslint-parser": "^9.1.0",
+    "webpack": "^5.76.3",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.1",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "@vue/compiler-sfc": "^3.2.47",
+    "ajv": "^8.12.0",
+    "ajv-errors": "^3.0.0",
+    "ajv-formats": "^2.1.1",
+    "ajv-i18n": "^4.2.0",
+    "element-plus": "^2.3.1",
+    "openai": "^3.2.1",
+    "vue": "^3.2.36",
+    "vue-loader": "^17.0.1"
+  }
+}
